@@ -10,24 +10,24 @@ import java.util.Map;
  *
  */
 public final class TermAndIntegerCounter implements Counter {
-	public static final String INTEGER = "integer";
-	
-	private final Map<String, Long> count = new HashMap<>();
+    public static final String INTEGER = "integer";
+    
+    private final Map<String, Long> count = new HashMap<>();
 
-	@Override
-	public Map<String, Long> getCount() {
-		return count;
-	}
+    @Override
+    public Map<String, Long> getCount() {
+        return count;
+    }
 
-	@Override
-	public void add(String item) {
-		String term = convertInteger(item);
-		count.compute(term, (k,v) -> v == null ? 1L : v+1);
-	}
-	
-	private String convertInteger(final String term) {
-		return term.matches("^\\d+$") ? INTEGER
-									  : term;
+    @Override
+    public void add(String item) {
+        String term = convertInteger(item);
+        count.compute(term, (k,v) -> v == null ? 1L : v+1);
+    }
+    
+    private String convertInteger(final String term) {
+        return term.matches("^\\d+$") ? INTEGER
+                                      : term;
 
-	}
+    }
 }

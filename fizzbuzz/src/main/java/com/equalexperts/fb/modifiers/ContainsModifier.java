@@ -8,20 +8,20 @@ package com.equalexperts.fb.modifiers;
  */
 public class ContainsModifier extends AbstractPrioritisedModifier<Integer, String> {
 
-	private final String contains;
-	
-	public ContainsModifier(String contains, String output) {
-		this(contains, output, 0);
-	}
-	
-	public ContainsModifier(String contains, String output, int priority) {
-		super(output, priority);
-		this.contains = contains;
-	}
-	
-	@Override
-	public boolean isApplicable(Integer input) {
-		return input.toString().contains(contains);
-	}
+    private final String contains;
+    
+    public ContainsModifier(String contains, String output) {
+        this(contains, output, 0);
+    }
+    
+    public ContainsModifier(String contains, String output, int priority) {
+        super(output, priority);
+        this.contains = contains;
+    }
+    
+    @Override
+    public boolean isApplicable(Integer input) {
+        return input.toString().contains(contains);
+    }
 
 }

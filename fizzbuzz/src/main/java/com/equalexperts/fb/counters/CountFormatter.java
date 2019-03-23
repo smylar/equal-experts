@@ -10,15 +10,15 @@ import java.util.List;
  */
 @FunctionalInterface
 public interface CountFormatter {
-	
-	/**
-	 * Format a count
-	 * 
-	 * @param count The counter to format
-	 * @param keysOfInterest Key to output in the order they are required
-	 * @return
-	 */
-	public String format(Counter count, List<String> keysOfInterest);
-	
-	
+    
+    /**
+     * Format a count
+     * 
+     * @param count The counter to format
+     * @param keysOfInterest Key to output in the order they are required
+     * @return
+     */
+    public String format(Counter count, List<String> keysOfInterest);
+    
+    
 }

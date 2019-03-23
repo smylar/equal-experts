@@ -8,21 +8,21 @@ package com.equalexperts.fb.modifiers;
  */
 public final class MultipleModifier extends AbstractPrioritisedModifier<Integer, String> {
 
-	private final int multiple;
-	
-	
-	public MultipleModifier(int multiple, String output) {
-		this(multiple, output, 0);
-	}
-	
-	public MultipleModifier(int multiple, String output, int priority) {
-		super(output, priority);
-		this.multiple = multiple;
-	}
+    private final int multiple;
+    
+    
+    public MultipleModifier(int multiple, String output) {
+        this(multiple, output, 0);
+    }
+    
+    public MultipleModifier(int multiple, String output, int priority) {
+        super(output, priority);
+        this.multiple = multiple;
+    }
 
-	@Override
-	public boolean isApplicable(Integer input) {
-		return input != 0 && input % multiple == 0;
-	}
+    @Override
+    public boolean isApplicable(Integer input) {
+        return input != 0 && input % multiple == 0;
+    }
 
 }
