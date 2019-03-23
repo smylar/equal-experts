@@ -1,8 +1,7 @@
 package com.equalexperts.fb.counters;
 
+import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Count the terms within a string, converting integers to the word integer
@@ -13,16 +12,17 @@ import java.util.stream.Stream;
 public final class TermAndIntegerCounter implements Counter {
 	public static final String INTEGER = "integer";
 	
-	/**
-	 * Return a map of each term in the input string with the number of times they occur
-	 * 
-	 * @param input
-	 * @return
-	 */
-	public Map<String,Long> count(final String input) {
-		return Stream.of(input.split("\\s+"))
-					 .map(this::convertInteger)
-					 .collect(Collectors.groupingBy(term -> term, Collectors.counting()));
+	private final Map<String, Long> count = new HashMap<>();
+
+	@Override
+	public Map<String, Long> getCount() {
+		return count;
+	}
+
+	@Override
+	public void add(String item) {
+		String term = convertInteger(item);
+		count.compute(term, (k,v) -> v == null ? 1L : v+1);
 	}
 	
 	private String convertInteger(final String term) {

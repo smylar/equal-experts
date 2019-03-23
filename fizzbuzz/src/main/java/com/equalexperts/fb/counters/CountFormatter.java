@@ -1,39 +1,24 @@
 package com.equalexperts.fb.counters;
 
 import java.util.List;
-import java.util.function.Supplier;
 
 /**
- * Perform a count with the selected counter and format the output.
+ * Format count output.
  * 
  * @author a.nonymous
  *
  */
-public enum CountFormatter {
-	TERM_AND_INTEGER(TermAndIntegerCounter::new);
-	
-	private Supplier<Counter> counter;
-	
-	private CountFormatter(Supplier<Counter> counter) {
-		this.counter = counter;
-	}
+@FunctionalInterface
+public interface CountFormatter {
 	
 	/**
-	 * Format a string containing counts;
+	 * Format a count
 	 * 
-	 * @param input
+	 * @param count The counter to format
 	 * @param keysOfInterest Key to output in the order they are required
 	 * @return
 	 */
-	public String formatCount(String input, List<String> keysOfInterest) {
-		var counts = counter.get().count(input);
-		StringBuffer output = new StringBuffer();
-		keysOfInterest.forEach(k -> {
-			output.append(k);
-			output.append(": ");
-			output.append(counts.getOrDefault(k, 0L).toString());
-			output.append(" ");
-		});
-		return output.toString().trim();
-	}
+	public String format(Counter count, List<String> keysOfInterest);
+	
+	
 }

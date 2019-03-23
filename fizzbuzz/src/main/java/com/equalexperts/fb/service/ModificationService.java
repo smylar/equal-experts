@@ -1,5 +1,7 @@
 package com.equalexperts.fb.service;
 
+import io.reactivex.Observable;
+
 public interface ModificationService {
 
 	/**
@@ -9,6 +11,6 @@ public interface ModificationService {
 	 * @param end Range end value (inclusive)
 	 * @return The generated ouput
 	 */
-	String modifyRange(int start, int end);
+	Observable<String> modifyRange(int start, int end);
 
 }
